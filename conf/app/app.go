@@ -11,10 +11,10 @@ import (
 	"github.com/jeffprestes/mercadodescentralizadohtml5/handler"
 	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/cache"
 	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/contx"
-	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/template"
 	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/cors"
-	"gopkg.in/macaron.v1"
+	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/template"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"gopkg.in/macaron.v1"
 )
 
 //SetupMiddlewares configures the middlewares using in each web request
@@ -38,23 +38,13 @@ func SetupMiddlewares(app *macaron.Macaron) {
 		Funcs:     template.FuncMaps(),
 	}))
 	app.Use(macaron.Renderer(macaron.RenderOptions{
-    	Directory: "public/templates",
-    	Funcs:     template.FuncMaps(),
-    }))
+		Directory: "public/templates",
+		Funcs:     template.FuncMaps(),
+	}))
 	//Cache in memory
 	app.Use(mcache.Cacher(
 		cache.Option(conf.Cfg.Section("").Key("cache_adapter").Value()),
 	))
-	/*
-	Redis Cache
-	Add this lib to import session: _ "github.com/go-macaron/cache/redis"
-	Later replaces the cache in memory instructions for the lines below
-	optCache := mcache.Options{
-			Adapter:       conf.Cfg.Section("").Key("cache_adapter").Value(),
-			AdapterConfig: conf.Cfg.Section("").Key("cache_adapter_config").Value(),
-		}
-	app.Use(mcache.Cacher(optCache))
-	*/
 	app.Use(session.Sessioner())
 	app.Use(contx.Contexter())
 	app.Use(cors.Cors())
@@ -62,40 +52,12 @@ func SetupMiddlewares(app *macaron.Macaron) {
 
 //SetupRoutes defines the routes the Web Application will respond
 func SetupRoutes(app *macaron.Macaron) {
-	app.Get("", func() string {
-		return "Mercurius Works!"
-	})
+	app.Get("", handler.Index)
 
 	//HealthChecker
 	app.Get("/health", handler.HealthCheck)
 
 	//Prometheus metrics
 	app.Get("/metrics", promhttp.Handler())
-	
-	/*
-		//An example to test DB connection
-		app.Get("", func() string {
-			db, err := conf.GetDB()
-			if err != nil {
-				return err.Error()
-			}
-			err = db.Ping()
-			if err != nil {
-				return err.Error()
-			}
-			col, err := conf.GetMongoCollection("teste")
-			if err != nil {
-				return err.Error()
-			}
-			defer col.Database.Session.Close()
-			teste := Teste{Status: "OK"}
-			err = col.Insert(teste)
-			return "Mercurius Works!"
-		})
 
-		//Include this struct after import session
-		type Teste struct {
-			Status string
-		}
-	*/
 }
