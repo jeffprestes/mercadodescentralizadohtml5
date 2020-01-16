@@ -150,6 +150,10 @@
 			"Rev": "c182affec369e30f25d3eb8cd8a478dee585ae7d"
 		},
 		{
+			"ImportPath": "github.com/novatrixtech/cryptonx",
+			"Rev": "ea6eb897e271e6b1fed8e10efd8f04ed9032af7c"
+		},
+		{
 			"ImportPath": "github.com/prometheus/client_golang/prometheus",
 			"Comment": "v1.1.0-14-g20428fa",
 			"Rev": "20428fa0bffcb4ee7a7941545ae0df9acdc9d8a7"
