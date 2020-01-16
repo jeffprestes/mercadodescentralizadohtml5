@@ -1,0 +1,9 @@
+{
+    "name": "Jogo Mercado Descentralizado",
+    "description": "Jogo Mercado Descentralizado - jogo para ensinar sobre cripto ativos",
+    "keywords": [
+      "go",
+    ],
+    "website": "https://jogomercadodesncentralizado.herokuapp.com",
+    "repository": "http://github.com/jeffprestes/mercadodescentralizadohtml5"
+  }
