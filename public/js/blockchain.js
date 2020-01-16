@@ -4,6 +4,8 @@ var lastBlockNumber = "z"
 function pegaHash() {
     console.log("chamado pegaHash")
     $("#cardhash").hide()
+    $("#cardbump").hide()
+    $("#carddump").hide()
     $("#aguardehash").show()
     $("#btnBuscarHash").removeClass( "btn-primary" ).addClass( "btn-light" );
     $("#btnBuscarHash").prop("disabled", true)
