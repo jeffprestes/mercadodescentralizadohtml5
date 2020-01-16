@@ -1,16 +1,16 @@
 package auth
 
 import (
-	"crypto/aes"
-	"crypto/cipher"
-	"encoding/hex"
 	"errors"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/jeffprestes/mercadodescentralizadohtml5/conf"
-	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/contx"
+	"log"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/jeffprestes/mercadodescentralizadohtml5/conf"
+	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/contx"
+	"github.com/novatrixtech/cryptonx"
 )
 
 // CreateJWTCookie create cookie with jwt token

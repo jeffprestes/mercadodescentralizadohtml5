@@ -1,9 +1,9 @@
 package auth
 
 import (
+	"log"
 	"net/http"
 	"strings"
-	"log"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/jeffprestes/mercadodescentralizadohtml5/lib/contx"
@@ -11,13 +11,13 @@ import (
 
 const cookie_name = "mercuriusAuth"
 
-// Oauth
+//Oauth
 type Oauth struct {
 	Id     string `json:"id"`
 	Secret string `json:"secret"`
 }
 
-// Claims
+//Claims
 type Claims struct {
 	Ip string `json:"ip"`
 	jwt.StandardClaims
@@ -56,26 +56,26 @@ func LoginRequired(ctx *contx.Context) {
 
 // LoginRequiredApi
 func LoginRequiredApi(ctx *contx.Context) {
-    header := ctx.Req.Header.Get("Authorization")
-    if header != "" {
-        splitted := strings.Split(header, " ")
+	header := ctx.Req.Header.Get("Authorization")
+	if header != "" {
+		splitted := strings.Split(header, " ")
 		if len(splitted) < 2 {
 			ctx.JSON(http.StatusBadRequest, map[string]string{"error": "Malformed request header"})
 			return
 		}
 		value := splitted[1]
 		token, err := jwt.ParseWithClaims(value, &Claims{}, parse)
-        if err != nil {
-            ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
-            return
-        }
-        if claims, ok := token.Claims.(*Claims); ok && token.Valid && ctx.RemoteAddr() == claims.Ip {
-            ctx.Data["jwt"] = *claims
-            return
-        } else {
-            ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
-            return
-        }
-    }
-    ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
+		if err != nil {
+			ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
+			return
+		}
+		if claims, ok := token.Claims.(*Claims); ok && token.Valid && ctx.RemoteAddr() == claims.Ip {
+			ctx.Data["jwt"] = *claims
+			return
+		} else {
+			ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
+			return
+		}
+	}
+	ctx.JSON(http.StatusUnauthorized, map[string]string{"error": "Unauthorized"})
 }
