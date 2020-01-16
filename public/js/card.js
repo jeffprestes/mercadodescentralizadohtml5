@@ -9,12 +9,6 @@ function exibeAguarde() {
     $("#carddump").hide()
 }
 
-function iniciaTela() {
-    $("#aguarde").hide()
-    $("#cardbump").hide()
-    $("#carddump").hide()
-}
-
 function escolheCard() {
     $("#aguarde").hide()
     let cardIndex = Math.floor(Math.random() * 24)      
