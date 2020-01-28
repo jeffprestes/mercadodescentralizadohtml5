@@ -10,14 +10,15 @@ function exibeAguarde() {
 }
 
 function escolheCard() {
-    $("#aguarde").hide()
     let cardIndex = Math.floor(Math.random() * 24)      
     let card = cards[cardIndex]
+    console.log(cardIndex, card)
     if (card.tipo==='Bump') {
         preparaCardBump(card)    
     } else {
         preparaCardDump(card)    
     }
+    $("#aguarde").hide()
 }
 
 function preparaCardBump(card) {
