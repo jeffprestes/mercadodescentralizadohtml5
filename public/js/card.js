@@ -12,7 +12,7 @@ function exibeAguarde() {
 function escolheCard() {
     let cardIndex = Math.floor(Math.random() * 24)      
     let card = cards[cardIndex]
-    console.log(cardIndex, card)
+    console.log(cardIndex, card, (card.tipo==='Bump'), (card.tipo==='Dump'))
     if (card.tipo==='Bump') {
         preparaCardBump(card)    
     } else {
@@ -28,6 +28,7 @@ function preparaCardBump(card) {
     } else {
         $("#cardbumpvalor").text("")
     }
+    //console.log($("#cardbumpdescricao").html(), card)
     $("#cardbump").show("slow")
 }
 
