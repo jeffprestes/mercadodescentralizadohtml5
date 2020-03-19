@@ -60,4 +60,6 @@ func SetupRoutes(app *macaron.Macaron) {
 	//Prometheus metrics
 	app.Get("/metrics", promhttp.Handler())
 
+	app.Get("/account/new", handler.GenerateEthereumPrivateKey)
+
 }
