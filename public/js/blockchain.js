@@ -6,6 +6,7 @@ function pegaHash() {
     $("#cardhash").hide()
     $("#cardbump").hide()
     $("#carddump").hide()
+    $("#gerarconta").hide()    
     $("#aguardehash").show()
     $("#btnBuscarHash").removeClass( "btn-primary" ).addClass( "btn-light" );
     $("#btnBuscarHash").prop("disabled", true)
