@@ -4,4 +4,6 @@ function iniciaTela() {
     $("#carddump").hide()
     $("#aguardehash").hide()
     $("#cardhash").hide()
+    $("#gerarconta").hide()
+    $("#aguardegerarconta").hide()
 }
