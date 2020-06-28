@@ -23,7 +23,7 @@ func main() {
 		Please check for Font Credits the figlet font database!
 		Figlet Frontend - Written by Julius Kammerl - 2005
 	*/
-	log.Println(".___  ___.  _______ .______        ______  __    __  .______       __   __    __       _______.     ___       ___  ")
+	log.Println(" .___  ___.  _______ .______        ______  __    __  .______       __   __    __       _______.     ___       ___  ")
 	log.Println("|   \\/   | |   ____||   _  \\      /      ||  |  |  | |   _  \\     |  | |  |  |  |     /       |    / _ \\     / _ ")
 	log.Println("|  \\  /  | |  |__   |  |_)  |    |  ,----'|  |  |  | |  |_)  |    |  | |  |  |  |    |   (----`   | | | |   | (_) |")
 	log.Println("|  |\\/|  | |   __|  |      /     |  |     |  |  |  | |      /     |  | |  |  |  |     \\   \\       | | | |    > _ < ")
